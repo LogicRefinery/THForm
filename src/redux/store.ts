@@ -1,8 +1,8 @@
 import { configureStore } from "@reduxjs/toolkit";
-// ...
+import surveyReducer from "./slices/surveySlice";
 
 const store = configureStore({
-  reducer: {},
+  reducer: { survey: surveyReducer },
 });
 
 // Infer the `RootState` and `AppDispatch` types from the store itself
