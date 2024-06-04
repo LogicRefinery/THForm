@@ -1,5 +1,5 @@
 import React from "react";
-import { Link } from "react-router-dom";
+import { NavLink } from "react-router-dom";
 import styled from "styled-components";
 
 const Nav = () => {
@@ -8,10 +8,11 @@ const Nav = () => {
       <h2 className="sr-only">GNB</h2>
       <NavList>
         <NavItem>
-          <StyledLink to="/">메인</StyledLink>
+          <StyledNavLink to="/">캐치폼 생성</StyledNavLink>
         </NavItem>
+
         <NavItem>
-          <StyledLink to="/surveylist">질문 리스트</StyledLink>
+          <StyledNavLink to="/surveylist">캐치폼 목록</StyledNavLink>
         </NavItem>
       </NavList>
     </StyledNav>
@@ -20,20 +21,15 @@ const Nav = () => {
 
 export default Nav;
 
-const StyledNav = styled.nav`
-  /* 네비게이션 스타일 */
-`;
+const StyledNav = styled.nav``;
 
 const NavList = styled.ul`
-  /* 리스트 스타일 */
-  list-style: none;
   padding: 0;
   margin: 0;
   display: flex;
 `;
 
 const NavItem = styled.li`
-  /* 리스트 아이템 스타일 */
   margin-right: 20px;
 
   &:last-child {
@@ -41,10 +37,15 @@ const NavItem = styled.li`
   }
 `;
 
-const StyledLink = styled(Link)`
-  /* 링크 스타일 */
+const StyledNavLink = styled(NavLink)`
   text-decoration: none;
-  color: #000;
+  font-size: 18px;
+  font-weight: bold;
+  color: black;
+
+  &.active {
+    color: #007bff;
+  }
 
   &:hover {
     color: #007bff;

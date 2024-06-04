@@ -1,23 +1,23 @@
+import { Question } from "./../../model/survey";
 import { createSlice, PayloadAction } from "@reduxjs/toolkit";
-// import { SurveyState } from "../../model/survey";
+import { Survey } from "../../model/survey";
 import type { RootState } from "../store";
+import { v4 as uuidv4 } from "uuid";
 
-const initialState: any = [
-  {
-    id: 1,
-    title: "폼 전체 제목입니다.",
-    description: "본문내용 입니다.",
-    questions: [
-      {
-        id: 1,
-        isRequired: true,
-        questionText: "What is your name?",
-        answerType: 1,
-        answer: ["답변이 들어있는 배열"],
-      },
-    ],
-  },
-];
+const initialState: Survey = {
+  id: uuidv4(),
+  title: "기본 설문 입니다.",
+  description: "설문에 대한 설명을 입력하는 란 입니다.",
+  questions: [
+    {
+      id: uuidv4(),
+      isRequired: true,
+      question: "1번 질문입니다.",
+      type: "shortSubjective",
+      answer: "단문형 or 장문형에 대한 답변입니다.",
+    },
+  ],
+};
 
 export const surveySlice = createSlice({
   name: "survey",

@@ -1,40 +1,46 @@
-export type SurveyList = Survey[];
+export type Surveys = Survey[];
 
-export type Survey = SurveyType1;
-// export type Survey = SurveyType1 | SurveyType2 | SurveyType3;
-
-export type SurveyType1 = {
-  id: number;
+export type Survey = {
+  id: string;
   title: string;
-  type: "type1";
   description: string;
-  questions: Question[];
+  questions: Questions;
 };
 
-// export type SurveyType2 = {
-//   id: number;
-//   title: string;
-//   type: "type2";
-//   // description: string;
-//   questions: Question[];
-// };
+export type Questions = QuestionType[];
 
-// export type SurveyType3 = {
-//   id: number;
-//   // title: string;
-//   type: "type3";
-//   description: string;
-//   questions: Question[];
-// };
+export type QuestionType =
+  | ShortSubjectiveType
+  | LongSubjectiveType
+  | MultipleChoiceType
+  | SingleChoiceType;
 
-export type Question = {
-  id: number;
+export interface Question {
+  id: string;
   isRequired: boolean;
-  questionText: string;
-  answerType: number;
-  answer: string[];
-};
+  question: string;
+}
 
-// 단문 장문의 형태
+export interface ShortSubjectiveType extends Question {
+  type: "shortSubjective";
+  answer: string;
+}
 
-// 객관식 복수의 형태와 단수의 형태
+export interface LongSubjectiveType extends Question {
+  type: "longSubjective";
+  answer: string;
+}
+
+export interface MultipleChoiceType extends Question {
+  type: "multiple";
+  options: Option[];
+  answer: number[];
+}
+
+export interface SingleChoiceType extends Question {
+  type: "single";
+  options: Option[];
+  answer: number;
+}
+
+export type Option = { id: string; option: string; checked: boolean };
