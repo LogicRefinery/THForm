@@ -1,17 +1,8 @@
-import React, { useRef } from "react";
+import React from "react";
 import { styled } from "styled-components";
-import { Option, QuestionMethodType } from "../../../model/survey";
+import { Option } from "../../../model/survey";
 
-function Multiple({
-  id,
-  options,
-  onAddOption,
-  onRemoveOption,
-  onChangeOption,
-  optionDragStart,
-  optionDragEnter,
-  drop,
-}: {
+type Props = {
   id: string;
   options: Option[] | null;
   onAddOption: (id: string, other?: boolean) => void;
@@ -24,7 +15,18 @@ function Multiple({
   optionDragStart: (idx: number, id: string) => void;
   optionDragEnter: (idx: number) => void;
   drop: (isOptions: boolean) => void;
-}) {
+};
+
+function Multiple({
+  id,
+  options,
+  onAddOption,
+  onRemoveOption,
+  onChangeOption,
+  optionDragStart,
+  optionDragEnter,
+  drop,
+}: Props) {
   const hasOtherOption = options?.find((option) =>
     option.hasOwnProperty("other")
   );

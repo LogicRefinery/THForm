@@ -6,6 +6,15 @@ import ShortSubjective from "./anwerItem/ShortSubjective";
 import Single from "./anwerItem/Single";
 import { Option, QuestionMethodType } from "../../model/survey";
 
+type Props = {
+  id: string;
+  type: string;
+  title: string;
+  options: Option[] | null;
+  answer: string;
+  questionMethod: QuestionMethodType;
+};
+
 function QuestionBody({
   id,
   type,
@@ -13,14 +22,7 @@ function QuestionBody({
   options,
   answer,
   questionMethod,
-}: {
-  id: string;
-  type: string;
-  title: string;
-  options: Option[] | null;
-  answer: any;
-  questionMethod: QuestionMethodType;
-}) {
+}: Props) {
   const renderAnswerType = () => {
     switch (type) {
       case "shortSubjective":

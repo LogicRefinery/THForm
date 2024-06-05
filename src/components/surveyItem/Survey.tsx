@@ -1,5 +1,5 @@
 import axios from "axios";
-import React, { useState } from "react";
+import React from "react";
 import { useNavigate } from "react-router-dom";
 import { styled } from "styled-components";
 import { Questions } from "../../model/survey";
@@ -47,9 +47,15 @@ function Survey({ id, index, title, description, questions }: Props) {
   return (
     <SurveyWrap>
       <SurveyHeader>
-        <div>{index + 1}</div>
-        <div>{title}</div>
-        <div>{description}</div>
+        <TitleArea>
+          <TitleAreaInner>
+            <span>{index + 1}.</span>
+            <span>{title}</span>
+          </TitleAreaInner>
+        </TitleArea>
+        <DescArea>
+          <Desc>{description}</Desc>
+        </DescArea>
       </SurveyHeader>
       <SurveyBody>
         <Button value="수정" onClick={onModify} />
@@ -71,28 +77,73 @@ const SurveyWrap = styled.div`
     rgba(0, 0, 0, 0.08) 0px 0px 2px 0px;
   border-radius: 5px;
 `;
+const TitleArea = styled.div`
+  width: 100%;
+  display: block;
+  gap: 4px;
+  font-weight: 800;
+  font-size: 18px;
+  height: 24px;
+  position: relative;
+`;
 
+const TitleAreaInner = styled.div`
+  width: 100%;
+  display: block;
+  gap: 4px;
+  font-weight: 800;
+  font-size: 19px;
+  height: 24px;
+
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+  position: absolute;
+`;
+
+const DescArea = styled.div`
+  width: 100%;
+  position: relative;
+  height: 20px;
+`;
+const Desc = styled.div`
+  width: 100%;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+  position: absolute;
+  left: 0;
+  top: 0;
+  height: 20px;
+  line-height: 20px;
+`;
 const SurveyHeader = styled.div`
   display: flex;
   flex-wrap: wrap;
   flex: 1;
-  justify-content: space-around;
 `;
 const SurveyBody = styled.div`
   display: flex;
-  flex-wrap: wrap;
+  gap: 8px;
 `;
+
 const Button = styled.input.attrs({ type: "button" })`
-  padding: 8px 16px;
-  margin-right: 5px;
-  font-size: 14px;
-  border: 1px solid #ccc;
-  border-radius: 4px;
+  color: #007bff;
+  width: 100%;
+  padding: 8px 12px;
+  font-size: 15px;
+  border-radius: 5px;
+  border: none;
+  background: white;
+  box-shadow: rgba(0, 0, 0, 0.15) 0px 2px 4px 0px,
+    rgba(0, 0, 0, 0.08) 0px 0px 2px 0px;
+
   cursor: pointer;
   transition: background-color 0.3s ease;
 
   &:hover {
-    background-color: #007bff;
+    transition: background-color 0.3s ease;
+    background: #007bff;
     color: white;
   }
 `;

@@ -36,13 +36,13 @@ export interface LongSubjectiveType extends Question {
 export interface MultipleChoiceType extends Question {
   type: "multiple";
   options: Option[];
-  answer: number[];
+  answer: string;
 }
 
 export interface SingleChoiceType extends Question {
   type: "single";
   options: Option[];
-  answer: number;
+  answer: string;
 }
 
 export type Option = {

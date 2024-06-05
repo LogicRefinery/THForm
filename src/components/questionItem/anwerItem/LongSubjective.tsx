@@ -1,15 +1,13 @@
 import React from "react";
 import { styled } from "styled-components";
 
-function LongSubjective({
-  id,
-  answer,
-  answerChange,
-}: {
+type Props = {
   id: string;
-  answer: any;
+  answer: string;
   answerChange: (e: React.ChangeEvent<HTMLTextAreaElement>, id: string) => void;
-}) {
+};
+
+function LongSubjective({ id, answer, answerChange }: Props) {
   return (
     <LongSubjectiveWrap>
       <label htmlFor="longAnswer" className="sr-only">

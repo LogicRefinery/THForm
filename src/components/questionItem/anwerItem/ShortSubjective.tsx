@@ -1,15 +1,13 @@
 import React from "react";
 import { styled } from "styled-components";
 
-function ShortSubjective({
-  id,
-  answer,
-  answerChange,
-}: {
+type Props = {
   id: string;
-  answer: any;
+  answer: string;
   answerChange: (e: React.ChangeEvent<HTMLInputElement>, id: string) => void;
-}) {
+};
+
+function ShortSubjective({ id, answer, answerChange }: Props) {
   return (
     <ShortSubjectiveWrap>
       <label htmlFor="shortAnswer" className="sr-only">

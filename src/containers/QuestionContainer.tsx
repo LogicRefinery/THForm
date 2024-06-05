@@ -31,8 +31,8 @@ function QuestionContainer() {
     },
   ]);
 
-  const [surveyTitle, setSurveyTitle] = useState<string>(""); //폼 제목
-  const [description, setDescription] = useState<string>(""); //폼 설명
+  const [surveyTitle, setSurveyTitle] = useState<string>("");
+  const [description, setDescription] = useState<string>("");
 
   const onChangeTitle = (e: React.ChangeEvent<HTMLInputElement>) => {
     setSurveyTitle(e.target.value);
@@ -319,14 +319,14 @@ function QuestionContainer() {
       dragOptionOverItem.current = idx;
     },
     drop: (isOptions?: boolean) => {
-      const CopyQuestionListItems = [...questions]; //배열 상태 복사 | 이것까진 OK
+      const CopyQuestionListItems = [...questions];
 
       if (isOptions) {
-        const options = CopyQuestionListItems[dragItem.current].options; //옵션 list 복사
+        const options = CopyQuestionListItems[dragItem.current].options;
         const optionItem = options && options[dragOptionItem.current];
-        options && options.splice(dragOptionItem.current, 1); //드래그 된 요소를 삭제
+        options && options.splice(dragOptionItem.current, 1);
         options &&
-          options.splice(dragOptionOverItem.current, 0, optionItem as Option); //드래그 되고있는 요소를 내가 놓은 요소 다음에 추가
+          options.splice(dragOptionOverItem.current, 0, optionItem as Option);
         const hasOther =
           options &&
           options.find((option) => {
@@ -337,20 +337,20 @@ function QuestionContainer() {
           const otherIndex = options.findIndex((option) => {
             return option.hasOwnProperty("other");
           });
-          options.splice(otherIndex, 1); // 삭제하는거
+          options.splice(otherIndex, 1);
           options.splice(options.length, 0, hasOther);
         }
-        dragOptionItem.current = 0; //값 초기화
-        dragOptionOverItem.current = 0; //값 초기화
+        dragOptionItem.current = 0;
+        dragOptionOverItem.current = 0;
       } else {
-        const dragItemContent = CopyQuestionListItems[dragItem.current]; //질문 list 복사
-        CopyQuestionListItems.splice(dragItem.current, 1); //드래그 되고있는 요소를 배열에서 삭제
-        CopyQuestionListItems.splice(dragOverItem.current, 0, dragItemContent); //드래그 되고있는 요소를 내가 놓은 요소 다음에 추가
-        dragItem.current = 0; //값 초기화
-        dragOverItem.current = 0; //값 초기화
+        const dragItemContent = CopyQuestionListItems[dragItem.current];
+        CopyQuestionListItems.splice(dragItem.current, 1);
+        CopyQuestionListItems.splice(dragOverItem.current, 0, dragItemContent);
+        dragItem.current = 0;
+        dragOverItem.current = 0;
       }
 
-      setQuestions(CopyQuestionListItems); // 새로운 리스트로 변경 : 리렌더링 일어남
+      setQuestions(CopyQuestionListItems);
     },
   };
 
@@ -437,19 +437,19 @@ const FormHeaderContent = styled.div`
     rgba(0, 0, 0, 0.08) 0px 0px 2px 0px;
   padding: 24px;
   label {
-    font-size: 16px; // 라벨에 대한 스타일
+    font-size: 16px;
     color: #333;
     margin-bottom: 8px;
   }
 
   p {
-    font-size: 14px; // 문단에 대한 스타일
+    font-size: 14px;
     color: #666;
     margin-bottom: 12px;
   }
 
   input {
-    font-size: 14px; // 입력 필드에 대한 스타일
+    font-size: 14px;
     padding: 8px 12px;
     border: 1px solid #ccc;
     border-radius: 4px;

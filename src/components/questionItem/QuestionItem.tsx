@@ -1,8 +1,19 @@
-import React, { useState } from "react";
+import React from "react";
 import styled from "styled-components";
 import { Option, QuestionMethodType } from "../../model/survey";
 import QuestionBody from "./QuestionBody";
 import QuestionHeader from "./QuestionHeader";
+
+type Props = {
+  index: number;
+  id: string;
+  isRequired: boolean;
+  type: string;
+  title: string;
+  options: Option[] | null;
+  answer: string;
+  questionMethod: QuestionMethodType;
+};
 
 function QuestionItem({
   index,
@@ -13,16 +24,7 @@ function QuestionItem({
   options,
   answer,
   questionMethod,
-}: {
-  index: number;
-  id: string;
-  isRequired: boolean;
-  type: string;
-  title: string;
-  options: Option[] | null;
-  answer: any;
-  questionMethod: QuestionMethodType;
-}) {
+}: Props) {
   return (
     <QuestionItemWrap>
       <img src="/drag-icon.svg" alt="드래그 아이콘" />
