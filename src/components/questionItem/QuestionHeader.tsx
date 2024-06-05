@@ -1,61 +1,57 @@
 import React, { useState } from "react";
 import { styled } from "styled-components";
+import { QuestionMethodType } from "../../model/survey";
 
 type Props = {
   index: number;
   id: string;
   type: string;
-  onSelectedChange: (
-    e: React.ChangeEvent<HTMLSelectElement>,
-    id: string
-  ) => void;
-  onRemove: (id: string) => void;
-  onClone: (id: string) => void;
+  isRequired: boolean;
+  questionMethod: QuestionMethodType;
 };
 
 function QuestionHeader({
   index,
   id,
   type,
-  onSelectedChange,
-  onRemove,
-  onClone,
+  isRequired,
+  questionMethod,
 }: Props) {
-  const [checked, setChecked] = useState<boolean>(true);
-  const onCheckedChange = () => {
-    setChecked((prev) => !prev);
-  };
   return (
     <QuestionHeaderWrap>
       <QuestionHeaderLeftContent>
         <div>Q{index}</div>
-        <input
-          type="checkbox"
-          id="required"
-          checked={checked}
-          onChange={onCheckedChange}
-        ></input>
-        <label htmlFor="required">필수항목</label>
+        <div>
+          <input
+            type="checkbox"
+            id={`required${id}`}
+            checked={isRequired}
+            onChange={() => {
+              questionMethod.onRequiredChange(id, !isRequired);
+            }}
+          ></input>
+          <label htmlFor={`required${id}`}>필수항목</label>
+        </div>
       </QuestionHeaderLeftContent>
       <QuestionHeaderRightContent>
-        <input
+        <Button
           type="button"
           id={`clone_${id}`}
-          value="복사"
+          value="복제"
           onClick={() => {
-            onClone(id);
+            questionMethod.onClone(id);
           }}
         />
         <label className="sr-only" htmlFor={`clone_${id}`}>
           복사버튼
         </label>
 
-        <input
+        <Button
           type="button"
           id={`remove_${id}`}
           value="삭제"
           onClick={() => {
-            onRemove(id);
+            questionMethod.onRemove(id);
           }}
         />
         <label className="sr-only" htmlFor={`remove_${id}`}>
@@ -67,7 +63,7 @@ function QuestionHeader({
           id="answer_type"
           value={type}
           onChange={(e) => {
-            onSelectedChange(e, id);
+            questionMethod.onSelectedChange(e, id);
           }}
         >
           <option value="shortSubjective">단문형 답변</option>
@@ -87,8 +83,58 @@ function QuestionHeader({
 const QuestionHeaderWrap = styled.div`
   display: flex;
   justify-content: space-between;
+  flex-wrap: wrap;
+  margin-bottom: 20px;
 `;
-const QuestionHeaderLeftContent = styled.div``;
-const QuestionHeaderRightContent = styled.div``;
+const QuestionHeaderLeftContent = styled.div`
+  display: flex;
+  & > div {
+    margin-right: 10px;
+    display: flex;
+    align-items: center;
+  }
+`;
+const QuestionHeaderRightContent = styled.div`
+  display: flex;
+  flex-wrap: wrap;
+`;
+
+const Button = styled.input.attrs({ type: "button" })`
+  padding: 8px 16px;
+  margin-right: 5px;
+  font-size: 14px;
+  border: 1px solid #ccc;
+  border-radius: 4px;
+  cursor: pointer;
+  transition: background-color 0.3s ease;
+
+  &:hover {
+    background-color: #f0f0f0;
+  }
+
+  &:active {
+    background-color: #e0e0e0;
+  }
+
+  &[id^="clone"] {
+    background-color: #666;
+    color: white;
+    border: none;
+
+    &:hover {
+      background-color: #007bff;
+    }
+  }
+
+  &[id^="remove"] {
+    background-color: #666;
+    color: white;
+    border: none;
+
+    &:hover {
+      background-color: #007bff;
+    }
+  }
+`;
 
 export default QuestionHeader;

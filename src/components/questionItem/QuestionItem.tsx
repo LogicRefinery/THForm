@@ -1,34 +1,27 @@
 import React, { useState } from "react";
 import styled from "styled-components";
+import { Option, QuestionMethodType } from "../../model/survey";
 import QuestionBody from "./QuestionBody";
 import QuestionHeader from "./QuestionHeader";
 
 function QuestionItem({
   index,
   id,
-  onRemove,
-  onClone,
+  isRequired,
   type,
-  onSelectedChange,
+  title,
+  options,
   answer,
-  answerChange,
+  questionMethod,
 }: {
   index: number;
   id: string;
-  onRemove: (id: string) => void;
-  onClone: (id: string) => void;
+  isRequired: boolean;
   type: string;
-  onSelectedChange: (
-    e: React.ChangeEvent<HTMLSelectElement>,
-    id: string
-  ) => void;
+  title: string;
+  options: Option[] | null;
   answer: any;
-  answerChange: (
-    e:
-      | React.ChangeEvent<HTMLInputElement>
-      | React.ChangeEvent<HTMLTextAreaElement>,
-    id: string
-  ) => void;
+  questionMethod: QuestionMethodType;
 }) {
   return (
     <QuestionItemWrap>
@@ -37,15 +30,16 @@ function QuestionItem({
         index={index}
         id={id}
         type={type}
-        onSelectedChange={onSelectedChange}
-        onRemove={onRemove}
-        onClone={onClone}
+        isRequired={isRequired}
+        questionMethod={questionMethod}
       ></QuestionHeader>
       <QuestionBody
         id={id}
         type={type}
+        title={title}
+        options={options}
         answer={answer}
-        answerChange={answerChange}
+        questionMethod={questionMethod}
       />
     </QuestionItemWrap>
   );

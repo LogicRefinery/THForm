@@ -1,5 +1,5 @@
 import React from "react";
-import { NavLink } from "react-router-dom";
+import { NavLink, useSearchParams } from "react-router-dom";
 import styled from "styled-components";
 
 const Nav = () => {
@@ -37,7 +37,7 @@ const NavItem = styled.li`
   }
 `;
 
-const StyledNavLink = styled(NavLink)`
+const StyledNavLink = styled(NavLink)<{ mode?: string }>`
   text-decoration: none;
   font-size: 18px;
   font-weight: bold;
