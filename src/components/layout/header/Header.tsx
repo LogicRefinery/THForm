@@ -8,7 +8,7 @@ function Header() {
     <StyledHeader>
       <h1>
         <Link to={"/"}>
-          <Image src="/logo.webp" alt="캐치시큐" />
+          <Image src="/logo.png" alt="thform" loading="lazy" />
         </Link>
       </h1>
       <Nav></Nav>
@@ -27,6 +27,7 @@ const Image = styled.img`
   display: block;
   width: 256px;
   height: 256px;
+  margin: 50px 0;
 `;
 
 export default Header;

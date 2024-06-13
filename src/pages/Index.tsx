@@ -10,7 +10,7 @@ function Index() {
   return (
     <Main>
       <Article>
-        <H3>{mode === "modify" ? "캐치폼 수정" : "캐치폼 생성"}</H3>
+        <H3>{mode === "modify" ? " 폼 수정" : " 폼 생성"}</H3>
         <P>개인정보 보호관련 규제를 준수할 수 있는 폼을 생성하세요.</P>
         <QuestionContainer />
       </Article>

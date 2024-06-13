@@ -25,15 +25,13 @@ function Survey({ id, index, title, description, questions }: Props) {
     try {
       const response = await axios.post("/api/survey");
       if (response) {
-        const isConfirmed = window.confirm(
-          "정말로 이 캐치폼을 삭제하시겠습니까?"
-        );
+        const isConfirmed = window.confirm("정말로 이 폼을 삭제하시겠습니까?");
         if (isConfirmed) {
           afterSubmitSuccess();
-          alert(`\"${title}\" 캐치폼이 삭제되었습니다.`);
+          alert(`\"${title}\" 폼이 삭제되었습니다.`);
         }
       } else {
-        throw new Error("캐치폼 삭제중 에러가 발생했습니다.");
+        throw new Error("폼 삭제중 에러가 발생했습니다.");
       }
     } catch (error) {
       console.error(error);

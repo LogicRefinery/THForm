@@ -6,7 +6,7 @@ function SurveyList() {
   return (
     <Main>
       <Article>
-        <H3>캐치폼 목록</H3>
+        <H3> 폼 목록</H3>
         <P>개인정보 보호관련 규제를 준수할 수 있는 폼을 생성하세요.</P>
         <SurveyContainer />
       </Article>

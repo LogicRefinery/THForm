@@ -143,10 +143,10 @@ function QuestionContainer() {
         const response = await axios.post("/api/survey");
         if (response) {
           afterSuccess();
-          alert("캐치폼 작성이 완료되었습니다.");
+          alert("폼 작성이 완료되었습니다.");
           navigate("./surveylist");
         } else {
-          throw new Error("캐치폼 생성중 에러가 발생했습니다.");
+          throw new Error(" 폼 생성중 에러가 발생했습니다.");
         }
       } catch (error) {
         console.error(error);
@@ -162,10 +162,10 @@ function QuestionContainer() {
       const response = await axios.patch("/api/survey");
       if (response) {
         afterSuccess();
-        alert("캐치폼 수정이 완료되었습니다.");
+        alert(" 폼 수정이 완료되었습니다.");
         navigate("./surveylist");
       } else {
-        throw new Error("캐치폼 수정중 에러가 발생했습니다.");
+        throw new Error(" 폼 수정중 에러가 발생했습니다.");
       }
     } catch (error) {
       console.error(error);
@@ -358,8 +358,8 @@ function QuestionContainer() {
     <FormWrap>
       <FormHeader>
         <FormHeaderContent>
-          <label htmlFor="surveyTitle">캐치폼 제목</label>
-          <p>캐치폼의 상단과 링크 공유 시 노출됩니다.</p>
+          <label htmlFor="surveyTitle"> 폼 제목</label>
+          <p> 폼의 상단과 링크 공유 시 노출됩니다.</p>
           <input
             type="text"
             id="surveyTitle"
@@ -369,8 +369,8 @@ function QuestionContainer() {
           ></input>
         </FormHeaderContent>
         <FormHeaderContent>
-          <label htmlFor="description">캐치폼 본문</label>
-          <p>캐치폼의 본문 내용을 편집할 수 있습니다.</p>
+          <label htmlFor="description"> 폼 본문</label>
+          <p> 폼의 본문 내용을 편집할 수 있습니다.</p>
           <input
             type="text"
             id="description"
@@ -416,7 +416,7 @@ function QuestionContainer() {
       <FormFooter>
         <AddButton onClick={onAdd} disabled={loading} value="+ 항목 추가하기" />
         <SubmitButton
-          value={`${mode === "modify" ? "캐치폼 수정하기" : "캐치폼 제출하기"}`}
+          value={`${mode === "modify" ? " 폼 수정하기" : " 폼 제출하기"}`}
           disabled={loading}
           onClick={mode === "modify" ? onModify : onSubmit}
         />
