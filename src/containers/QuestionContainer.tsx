@@ -427,6 +427,10 @@ function QuestionContainer() {
 
 const FormWrap = styled.div`
   width: 50%;
+
+  @media screen and (max-width: 1024px) {
+    width: 90%;
+  }
 `;
 const FormHeader = styled.div``;
 const FormHeaderContent = styled.div`

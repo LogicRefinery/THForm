@@ -70,6 +70,10 @@ const SurveyWrap = styled.div`
   flex-wrap: wrap;
   height: 100px;
   width: 50%;
+  @media screen and (max-width: 1024px) {
+    width: 90%;
+  }
+
   padding: 0 20px;
   box-shadow: rgba(0, 0, 0, 0.15) 0px 2px 4px 0px,
     rgba(0, 0, 0, 0.08) 0px 0px 2px 0px;

@@ -57,8 +57,7 @@ function QuestionHeader({
         <label className="sr-only" htmlFor={`remove_${id}`}>
           삭제버튼
         </label>
-
-        <select
+        <Select
           name="answer_type"
           id="answer_type"
           value={type}
@@ -70,7 +69,7 @@ function QuestionHeader({
           <option value="longSubjective">장문형 답변</option>
           <option value="multiple">객관식 답변( 복수선택 )</option>
           <option value="single">객관식 답변( 단수선택 )</option>
-        </select>
+        </Select>
 
         <label className="sr-only" htmlFor="answer_type">
           답변유형 선택
@@ -85,6 +84,11 @@ const QuestionHeaderWrap = styled.div`
   justify-content: space-between;
   flex-wrap: wrap;
   margin-bottom: 20px;
+  @media screen and (max-width: 1024px) {
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+  }
 `;
 const QuestionHeaderLeftContent = styled.div`
   display: flex;
@@ -97,6 +101,11 @@ const QuestionHeaderLeftContent = styled.div`
 const QuestionHeaderRightContent = styled.div`
   display: flex;
   flex-wrap: wrap;
+  @media screen and (max-width: 1024px) {
+    justify-content: center;
+    margin-top: 20px;
+    gap: 10px;
+  }
 `;
 
 const Button = styled.input.attrs({ type: "button" })`
@@ -135,6 +144,11 @@ const Button = styled.input.attrs({ type: "button" })`
       background-color: #007bff;
     }
   }
+`;
+
+const Select = styled.select`
+  height: 32px;
+  border-radius: 4px;
 `;
 
 export default QuestionHeader;
