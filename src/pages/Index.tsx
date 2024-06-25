@@ -31,6 +31,7 @@ const H3 = styled.h3`
   margin-bottom: 20px;
 `;
 const P = styled.p`
+  text-align: center;
   margin-bottom: 40px;
   width: 90%;
 `;
