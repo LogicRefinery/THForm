@@ -32,6 +32,7 @@ const H3 = styled.h3`
 `;
 const P = styled.p`
   margin-bottom: 40px;
+  width: 90%;
 `;
 
 export default Index;

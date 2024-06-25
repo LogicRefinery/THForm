@@ -28,6 +28,10 @@ const Image = styled.img`
   width: 256px;
   height: 256px;
   margin: 50px 0;
+  @media screen and (max-width: 1024px) {
+    width: 128px;
+    height: 128px;
+  }
 `;
 
 export default Header;

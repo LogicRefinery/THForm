@@ -44,21 +44,23 @@ function Survey({ id, index, title, description, questions }: Props) {
 
   return (
     <SurveyWrap>
-      <SurveyHeader>
-        <TitleArea>
-          <TitleAreaInner>
-            <span>{index + 1}.</span>
-            <span>{title}</span>
-          </TitleAreaInner>
-        </TitleArea>
-        <DescArea>
-          <Desc>{description}</Desc>
-        </DescArea>
-      </SurveyHeader>
-      <SurveyBody>
-        <Button value="수정" onClick={onModify} />
-        <Button value="삭제" onClick={onRemove} />
-      </SurveyBody>
+      <SurveyItem>
+        <SurveyHeader>
+          <TitleArea>
+            <TitleAreaInner>
+              <span>{index + 1}.</span>
+              <span>{title}</span>
+            </TitleAreaInner>
+          </TitleArea>
+          <DescArea>
+            <Desc>{description}</Desc>
+          </DescArea>
+        </SurveyHeader>
+        <SurveyBody>
+          <Button value="수정" onClick={onModify} />
+          <Button value="삭제" onClick={onRemove} />
+        </SurveyBody>
+      </SurveyItem>
     </SurveyWrap>
   );
 }
@@ -66,19 +68,26 @@ export default Survey;
 
 const SurveyWrap = styled.div`
   display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  width: 100%;
+  padding: 0 20px;
+`;
+
+const SurveyItem = styled.div`
+  display: flex;
   align-items: center;
   flex-wrap: wrap;
   height: 100px;
-  width: 50%;
-  @media screen and (max-width: 1024px) {
-    width: 90%;
-  }
-
   padding: 0 20px;
+  margin-bottom: 10px;
+  width: 80%;
   box-shadow: rgba(0, 0, 0, 0.15) 0px 2px 4px 0px,
     rgba(0, 0, 0, 0.08) 0px 0px 2px 0px;
   border-radius: 5px;
 `;
+
 const TitleArea = styled.div`
   width: 100%;
   display: block;
