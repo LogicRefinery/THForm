@@ -78,7 +78,6 @@ function QuestionBody({
         <label className="sr-only" htmlFor="question">
           질문제목
         </label>
-        {/* 추후에 리덕스에 값 저장해야됨. */}
         <InputText
           type="text"
           placeholder="질문 내용을 200자 이하로 입력해주세요."
